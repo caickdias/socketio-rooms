@@ -7,10 +7,15 @@ const io = require('socket.io')(server, {
 const { rooms } = require('./data/rooms');
 
 io.on("connection", client => {
-    
-    console.log('listening socketio')
-    
+        
     io.emit("rooms", rooms);
+
+    client.on("joinRoom", roomId => {
+        client.join(roomId);
+        const index = rooms.findIndex(room => room.id === roomId);
+        rooms[index].users.push(client.id);
+        io.emit("room", rooms);
+    })
 
 });
 

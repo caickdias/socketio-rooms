@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 
 import './App.css';
 
-import Room from '../src/components/Cards/Room';
+import CardRoom from './components/CardRoom';
 
 const socket = io("http://localhost:8000", {
     transports: ['websocket', 'polling']
@@ -30,7 +30,7 @@ function App() {
             <div style={styles.roomsContainer}>
             {
                 rooms?.map((room, index) => (
-                    <Room
+                    <CardRoom
                         key={room.id} 
                         name={room.id} 
                         maxCap={room.maxCapacity} 

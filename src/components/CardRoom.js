@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Room = ({ name, code, currentUsers, maxCap }) => {
+const CardRoom = ({ name, code, currentUsers, maxCap }) => {
   return (
     <div style={styles.container}>
       <p>Room {name}</p>
@@ -33,4 +33,4 @@ const styles = {
   }
 }
 
-export default Room
+export default CardRoom
