@@ -2,6 +2,8 @@ import React from 'react';
 
 import './App.css';
 
+import Room from '../src/components/Cards/Room';
+
 function App() {
 
   return (
@@ -14,6 +16,8 @@ function App() {
 
         <div style={styles.roomsContainer}>
 
+            <Room name={1} />
+
         </div>
     </div>
   );
@@ -24,6 +28,8 @@ const styles = {
         display: 'flex',        
         flexDirection: 'column',
         backgroundColor: '#ecf0f1',        
+        paddingLeft: 20,
+        paddingRight: 20,
     },
     appTitleCard: {
         display: 'flex',
@@ -42,6 +48,7 @@ const styles = {
     roomsContainer: {
         display: 'flex',
         flex: 1,        
+        padding: 10,
     } 
 }
 
