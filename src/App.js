@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
 
 import './App.css';
 
 import Room from '../src/components/Cards/Room';
 
+const socket = io("http://localhost:8000", {
+    transports: ['websocket', 'polling']
+})
+
 function App() {
 
-  return (
-    <div className="container" style={styles.container}>
-        <div style={styles.appTitleCard}>
-            <h1>ROOMS</h1>
+    const [rooms, setRooms] = useState([]);
+
+    useEffect(() => {
+        socket.on("rooms", rooms => {
+            setRooms(rooms);
+        })
+    }, []);
+
+    return (
+        <div className="container" style={styles.container}>
+            <div style={styles.appTitleCard}>
+                <h1>ROOMS</h1>
+            </div>
+
+            <div style={styles.lineDivider}></div>
+
+            <div style={styles.roomsContainer}>
+            {
+                rooms?.map((room, index) => (
+                    <Room
+                        key={room.id} 
+                        name={room.id} 
+                        maxCap={room.maxCapacity} 
+                        currentUsers={room.users.length} 
+                    />
+                ))
+            }                
+            </div>
         </div>
-
-        <div style={styles.lineDivider}></div>
-
-        <div style={styles.roomsContainer}>
-
-            <Room name={1} />
-
-        </div>
-    </div>
-  );
+    );
 }
 
 const styles = {

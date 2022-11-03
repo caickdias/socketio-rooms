@@ -5,7 +5,7 @@ const Room = ({ name, code, currentUsers, maxCap }) => {
     <div style={styles.container}>
       <p>Room {name}</p>
       <div style={styles.bottom}>
-        <p>1/5</p>
+        <p>{currentUsers}/{maxCap}</p>
         <p>Join</p>
       </div>
     </div>
@@ -23,6 +23,7 @@ const styles = {
     borderRadius: 10,
     backgroundColor: '#3498db',
     color: 'white',
+    margin: 5,
   },
   bottom: { 
     display: 'flex', 
