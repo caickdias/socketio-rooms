@@ -1,12 +1,20 @@
 import React from 'react'
 
-const CardRoom = ({ name, code, currentUsers, maxCap }) => {
+import { Link } from 'react-router-dom';
+
+const CardRoom = ({ name, code, currentUsers, maxCap, onClick }) => {
   return (
     <div style={styles.container}>
       <p>Room {name}</p>
+      
       <div style={styles.bottom}>
         <p>{currentUsers}/{maxCap}</p>
-        <p>Join</p>
+        <Link
+          to='room'
+          state={{ code: code }}
+        >
+          Join
+        </Link>
       </div>
     </div>
   )

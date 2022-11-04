@@ -33,6 +33,7 @@ function App() {
                     <CardRoom
                         key={room.id} 
                         name={room.id} 
+                        code={room.id}
                         maxCap={room.maxCapacity} 
                         currentUsers={room.users.length} 
                     />

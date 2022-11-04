@@ -11,11 +11,18 @@ io.on("connection", client => {
     io.emit("rooms", rooms);
 
     client.on("joinRoom", roomId => {
+        
         client.join(roomId);
+
         const index = rooms.findIndex(room => room.id === roomId);
-        rooms[index].users.push(client.id);
-        io.emit("room", rooms);
-    })
+        rooms[index].users.push(client.id);        
+        
+        io.emit("roomInfo", rooms[index]);
+    });
+
+    client.on("disconnect", () => {
+        
+    } )
 
 });
 
