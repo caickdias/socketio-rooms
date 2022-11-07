@@ -10,9 +10,10 @@ const socket = io("http://localhost:8000", {
 
 const Room = () => {
   const location = useLocation();
-  const { code } = location.state;
+  const { code } = location.state;  
 
   const [roomInfo, setRoomInfo] = useState([]);
+  const [messages, setMessages] = useState(['opa', 'eai', 'bom?', 'bom, e tu?']);
 
   useEffect(() => {
     
@@ -39,7 +40,15 @@ const Room = () => {
         </div>
 
         <div style={styles.chatContainer}>
-          {code}
+          <div style={styles.chatMessages}>
+          {
+            messages.map(message => <p>{message}</p>)
+          }
+          </div>
+
+          <div style={styles.chatInput}>
+            <input type="text" />
+          </div>
         </div>
       </div>
 
@@ -74,11 +83,21 @@ const styles = {
     backgroundColor: '#ecf0f1',  
   },
   chatContainer: {
+    display: 'flex',
+    flexDirection: 'column',
     height: '90%',
     width: 400,
     borderRadius: 10,
     backgroundColor: '#ecf0f1',  
   },
+  chatMessages: {        
+    height: '100%',
+    borderRadius: 10,
+  },
+  chatInput: {
+    padding: 5,    
+    borderRadius: 10,
+  }
 
 }
 
