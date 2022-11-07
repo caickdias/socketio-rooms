@@ -41,13 +41,17 @@ const Room = () => {
 
         <div style={styles.chatContainer}>
           <div style={styles.chatMessages}>
-          {
-            messages.map(message => <p>{message}</p>)
-          }
+          {            
+            messages.map(message => 
+              <div style={styles.messageContainer}>                                
+                  <h5 style={{ margin: 0}}>Caick:</h5>
+                  <p style={{margin: 0}}>{message}</p>                
+              </div>
+          )}
           </div>
 
           <div style={styles.chatInput}>
-            <input type="text" />
+            <input style={{ width: '98%', }} type="text" />
           </div>
         </div>
       </div>
@@ -65,7 +69,7 @@ const styles = {
   },
   title: {
     display: 'flex',    
-    height: 80,        
+    height: 80,            
     alignItems: 'center',
     justifyContent: 'center',
     color: 'white',
@@ -77,7 +81,8 @@ const styles = {
     justifyContent: 'space-evenly',
   },
   usersContainer: {
-    height: '90%',
+    overflowY: 'auto',    
+    height: '70vh',
     width: 200,
     borderRadius: 10,
     backgroundColor: '#ecf0f1',  
@@ -85,19 +90,29 @@ const styles = {
   chatContainer: {
     display: 'flex',
     flexDirection: 'column',
-    height: '90%',
+    height: '70vh',
     width: 400,
     borderRadius: 10,
     backgroundColor: '#ecf0f1',  
   },
-  chatMessages: {        
+  chatMessages: {    
+    overflowY: 'auto',    
     height: '100%',
     borderRadius: 10,
   },
-  chatInput: {
+  chatInput: {    
     padding: 5,    
     borderRadius: 10,
-  }
+  },
+  messageContainer: {            
+    maxWidth: 100,
+    padding: 5,
+    margin: 10,
+    borderRadius: 5,
+    boxShadow: "2px 2px 4px lightGray",
+    backgroundColor: 'white',
+    fontSize: 14,    
+  },
 
 }
 
