@@ -17,7 +17,7 @@ function App() {
         socket.on("rooms", rooms => {
             setRooms(rooms);
         })
-    }, []);
+    }, [rooms]);
 
     return (
         <div className="container" style={styles.container}>
